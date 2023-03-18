@@ -54,6 +54,9 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    homes House[] @relation("members")
+    chores Chore[]
+    admins House[] @relation("Admin")
 }
 
 model VerificationToken {
@@ -62,4 +65,23 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model House {
+    id String @id @default(cuid())
+    name String
+    admin User @relation("Admin", fields:[adminId], references: [id])
+    adminId String
+    members User[] @relation("members")
+    chores Chore[]
+}
+
+model Chore {
+    id String @id @default(cuid())
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId String
+    house House @relation(fields: [houseId], references: [id], onDelete: Cascade)
+    houseId String
+    title String
+    due DateTime
 }
