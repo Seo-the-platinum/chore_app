@@ -1,17 +1,29 @@
 import React from 'react'
-import Link from 'next/link'
+import Header from './Header'
+import Footer from './Footer'
+import ResizeHook from '~/utils/ResizeHook'
+import { signIn, signOut } from "next-auth/react";
+import { api } from '~/utils/api'
 
 const Nav = () => {
+    const width = ResizeHook()
+    const { data: session } = api.auth.getSession.useQuery()
+    console.log(session)
     return (
-        <div className='
-            flex justify-center
-            text-lg text-emerald-500 gap-4
-            sm:text-4xl sm:justify-end
-            '
-        >
-            <Link href='/'> Home </Link>
-            <Link href='/homes'> My Homes </Link>
-            <Link href='/manage'> Manage Homes </Link>
+        <div className='flex justify-end gap-10'>
+            {
+                width < 640 ? <Footer /> :
+                    <Header />
+            }
+            {
+                session ?
+                    <button
+                        className='rounded p-1 text-slate-100 bg-emerald-500'
+                        onClick={() => void signOut()}>Sign Out</button> :
+                    <button
+                        className='rounded p-1 text-slate-100 bg-emerald-500'
+                        onClick={() => void signIn()}>Sign In</button>
+            }
         </div>
     )
 }

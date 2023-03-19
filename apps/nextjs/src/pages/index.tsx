@@ -84,12 +84,8 @@ const CreatePostForm: React.FC = () => {
 };
 
 const Home: NextPage = () => {
-  const postQuery = api.post.all.useQuery();
-
-  const deletePostMutation = api.post.delete.useMutation({
-    onSettled: () => postQuery.refetch(),
-  });
-
+  const { data: session } = api.auth.getSession.useQuery();
+  console.log(session)
   return (
     <>
       <Head>
