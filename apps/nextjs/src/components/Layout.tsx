@@ -4,7 +4,7 @@ import type { PropsWithChildren } from 'react'
 
 const Layout = ({ children }: PropsWithChildren) => {
     return (
-        <div className='bg-gradient-to-b from-[#2e026d] to-[#15162c]'>
+        <div className='max-w-7xl min-full flex-grow'>
             <Nav />
             <main>{children}</main>
         </div>

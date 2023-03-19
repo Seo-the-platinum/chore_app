@@ -3,10 +3,15 @@ import Link from 'next/link'
 
 const Nav = () => {
     return (
-        <div className=''>
-            <Link className='text-emerald-500' href='/'> Home </Link>
-            <Link className='text-emerald-500' href='/chores'> Chores </Link>
-            <Link className='text-emerald-500' href='/adminHomes'> My Homes </Link>
+        <div className='
+            flex justify-center
+            text-lg text-emerald-500 gap-4
+            sm:text-4xl sm:justify-end
+            '
+        >
+            <Link href='/'> Home </Link>
+            <Link href='/homes'> My Homes </Link>
+            <Link href='/manage'> Manage Homes </Link>
         </div>
     )
 }
