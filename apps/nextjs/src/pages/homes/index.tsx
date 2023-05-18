@@ -2,6 +2,7 @@ import React from 'react'
 import { api } from '~/utils/api'
 import Link from 'next/link'
 import { MdAddCircleOutline } from "react-icons/md";
+import HomesList from '../../components/home/HomesList'
 
 const Homes = () => {
     const { data: session } = api.auth.getSession.useQuery()
@@ -18,7 +19,7 @@ const Homes = () => {
                     <MdAddCircleOutline />
                 </Link> :
                 <h1>Please Login to see your chores</h1>}
-            {homes && <Homes homes={homes} />}
+            {homes && <HomesList homes={homes} />}
         </div>
     )
 }

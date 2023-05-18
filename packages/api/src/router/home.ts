@@ -29,6 +29,23 @@ export const homeRouter = createTRPCRouter({
           },
         ],
       },
+      include: {
+        admin: true,
+      },
     });
   }),
+  getHomeDetails: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(({ ctx, input }) => {
+      return ctx.prisma.house.findUnique({
+        where: {
+          id: input.id,
+        },
+        include: {
+          admin: true,
+          chores: true,
+          members: true,
+        },
+      });
+    }),
 });
