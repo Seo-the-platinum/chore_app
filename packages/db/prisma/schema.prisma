@@ -57,6 +57,7 @@ model User {
     homes House[] @relation("members")
     chores Chore[]
     admins House[] @relation("Admin")
+    username String? @unique
 }
 
 model VerificationToken {

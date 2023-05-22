@@ -8,7 +8,9 @@ import { api } from '~/utils/api'
 const Nav = () => {
     const width = ResizeHook()
     const { data: session } = api.auth.getSession.useQuery()
-
+    const handleSignIn = async () => {
+        await signIn(undefined, { callbackUrl: "/onboarding" })
+    }
     return (
         <div className='flex justify-end gap-10'>
             {
@@ -24,7 +26,7 @@ const Nav = () => {
                     :
                     <button
                         className='rounded p-1 text-slate-100 bg-emerald-500'
-                        onClick={() => void signIn()}>Sign In
+                        onClick={() => void handleSignIn()}>Sign In
                     </button>
             }
         </div>

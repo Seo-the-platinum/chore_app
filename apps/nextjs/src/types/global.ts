@@ -8,7 +8,8 @@ export type HomesProps = {
   homes: House[];
 };
 
-type User = {
+export type User = {
   id: string;
   name: string | null;
+  username: string | null;
 };
