@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import type { GetServerSideProps } from 'next'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from '../../../../packages/auth/src/auth-options'
-import type { User } from '../types/global'
+import { api } from '~/utils/api'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getServerSession(context.req, context.res, authOptions)
@@ -15,12 +15,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                 permanent: false,
             }
         }
-    } else if (user) {
-        return {
-            props: {
-                user
-            },
-        }
     } else {
         return {
             props: {},
@@ -28,15 +22,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 }
 
-type OnboardingProps = {
-    user: User;
-}
-const Onboarding = ({ user }: OnboardingProps) => {
+const Onboarding = () => {
     const inputRef = useRef<HTMLInputElement>(null)
+    const { mutate } = api.user.addUsername.useMutation()
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const username = inputRef.current?.value
-        console.log(username)
+        username && mutate(username)
     }
     return (
         <div>

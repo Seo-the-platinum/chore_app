@@ -1,14 +1,9 @@
-import { useState } from "react";
+import React from 'react'
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import { signIn, signOut } from "next-auth/react";
 import Image from 'next/image'
 
-import { api } from "~/utils/api";
-
 const Home: NextPage = () => {
-  const { data: session } = api.auth.getSession.useQuery();
 
   return (
     <>

@@ -10,6 +10,11 @@ export const homeRouter = createTRPCRouter({
         data: {
           name: input.name,
           adminId: ctx.session.user.id,
+          members: {
+            connect: {
+              id: ctx.session.user.id,
+            },
+          },
         },
       });
     }),

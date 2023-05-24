@@ -11,6 +11,9 @@ const Nav = () => {
     const handleSignIn = async () => {
         await signIn(undefined, { callbackUrl: "/onboarding" })
     }
+    const handleSignOut = async () => {
+        await signOut({ callbackUrl: '/' })
+    }
     return (
         <div className='flex justify-end gap-10'>
             {
@@ -21,7 +24,7 @@ const Nav = () => {
                 session ?
                     <button
                         className='rounded p-1 text-slate-100 bg-emerald-500'
-                        onClick={() => void signOut()}>Sign Out
+                        onClick={() => void handleSignOut()}>Sign Out
                     </button>
                     :
                     <button
