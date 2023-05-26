@@ -31,4 +31,23 @@ export const userRouter = createTRPCRouter({
         },
       });
     }),
+  sendInvite: protectedProcedure
+    .input(z.object({ userId: z.string(), houseId: z.string() }))
+    .mutation(({ ctx, input }) => {
+      const { userId, houseId } = input;
+      return ctx.prisma.invite.create({
+        data: {
+          house: {
+            connect: {
+              id: houseId,
+            },
+          },
+          user: {
+            connect: {
+              id: userId,
+            },
+          },
+        },
+      });
+    }),
 });

@@ -10,12 +10,6 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id      String @id @default(cuid())
-    title   String
-    content String
-}
-
 // NextAuth.js Models
 // NOTE: When using postgresql, mysql or sqlserver, 
 // uncomment the @db.Text annotations below
@@ -58,6 +52,7 @@ model User {
     chores Chore[]
     admins House[] @relation("Admin")
     username String? @unique
+    invites Invite[]
 }
 
 model VerificationToken {
@@ -75,6 +70,7 @@ model House {
     adminId String
     members User[] @relation("members")
     chores Chore[]
+    invites Invite[]
 }
 
 model Chore {
@@ -85,4 +81,14 @@ model Chore {
     houseId String
     title String
     due DateTime
+}
+
+model Invite {
+    id String @id @default(cuid())
+    house House @relation(fields: [houseId], references: [id], onDelete: Cascade)
+    houseId String
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId String
+    accepted Boolean @default(false)
+    @@unique([houseId, userId])
 }

@@ -53,4 +53,31 @@ export const homeRouter = createTRPCRouter({
         },
       });
     }),
+  addChore: protectedProcedure
+    .input(
+      z.object({
+        houseId: z.string(),
+        title: z.string(),
+        dueDate: z.date(),
+        userId: z.string(),
+      }),
+    )
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.chore.create({
+        data: {
+          due: input.dueDate,
+          title: input.title,
+          house: {
+            connect: {
+              id: input.houseId,
+            },
+          },
+          user: {
+            connect: {
+              id: input.userId,
+            },
+          },
+        },
+      });
+    }),
 });

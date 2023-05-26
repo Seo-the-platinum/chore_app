@@ -1,0 +1,3 @@
+type SearchUsersProps = {
+  houseId: string;
+};
