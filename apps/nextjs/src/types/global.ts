@@ -13,3 +13,11 @@ export type User = {
   name: string | null;
   username: string | null;
 };
+
+export type InviteProps = {
+  invite: {
+    id: string;
+    houseId: string;
+    userId: string;
+  } & Partial<{ house: House }>;
+};

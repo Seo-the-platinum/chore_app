@@ -31,6 +31,20 @@ export const userRouter = createTRPCRouter({
         },
       });
     }),
+  getUserInvites: protectedProcedure.query(({ ctx }) => {
+    return ctx.prisma.invite.findMany({
+      where: {
+        userId: ctx.session.user.id,
+      },
+      include: {
+        house: {
+          include: {
+            admin: true,
+          },
+        },
+      },
+    });
+  }),
   sendInvite: protectedProcedure
     .input(z.object({ userId: z.string(), houseId: z.string() }))
     .mutation(({ ctx, input }) => {

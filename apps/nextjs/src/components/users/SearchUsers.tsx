@@ -18,13 +18,13 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
         setUserQuery(username)
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!users) return
         const user = users[focusedIndex]
         user && mutate({ houseId: houseId, userId: user.id })
     }
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
         const { key } = e
         let nextIndex = 0
         if (key === 'ArrowDown' && users) {

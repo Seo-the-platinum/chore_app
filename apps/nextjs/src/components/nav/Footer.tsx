@@ -1,7 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
+import { api } from '~/utils/api'
 
 const Footer = () => {
+    const { data: session } = api.auth.getSession.useQuery()
     return (
         <nav className='
             absolute bottom-0 left-0 
@@ -12,7 +14,9 @@ const Footer = () => {
             '
         >
             <Link href='/'> Chore App </Link>
-            <Link href='/homes'> My Homes </Link>
+            {
+                session && <Link href={`/homes`}> My Homes </Link>
+            }
         </nav>
     )
 }

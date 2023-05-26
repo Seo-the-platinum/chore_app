@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useRouter } from 'next/router'
 import { api } from '~/utils/api'
-import SearchUsers from '../../components/member/SearchUsers'
+import SearchUsers from '../../components/users/SearchUsers'
 
 const HomeDetails = () => {
     const router = useRouter()
+    const inputRef = useRef<HTMLInputElement>(null)
     const { data: home } = api.home.getHomeDetails.useQuery({ id: router.query.id as string })
-    const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const chore = e.target[0].value
+        const chore = inputRef?.current?.value
+        console.log(chore)
     }
     if (!home) return null
 
@@ -20,7 +22,7 @@ const HomeDetails = () => {
             <SearchUsers houseId={home.id} />
             <form className='flex flex-col' onSubmit={handleSubmit}>
                 <label>Add Chore</label>
-                <input type='text' />
+                <input ref={inputRef} type='text' />
                 <label>Assign Member</label>
                 <select>
                     <option value=''> Select Member </option>
