@@ -20,4 +20,10 @@ export type InviteProps = {
     houseId: string;
     userId: string;
   } & Partial<{ house: House }>;
+  mutate: ({}: ReplyObject) => void;
+};
+
+type ReplyObject = {
+  inviteId: string;
+  accepted: boolean;
 };

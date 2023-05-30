@@ -5,7 +5,7 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
     const [userQuery, setUserQuery] = useState('')
     const [focusedIndex, setFocusedIndex] = useState(-1)
     const resultContainer = useRef<HTMLInputElement>(null)
-    const { data: users } = api.user.getFilteredUsers.useQuery(userQuery, { enabled: !!userQuery.length })
+    const { data: users } = api.user.getFilteredUsers.useQuery({ query: userQuery, houseId: houseId }, { enabled: !!userQuery.length })
     const { mutate } = api.user.sendInvite.useMutation()
 
     useEffect(() => {
@@ -38,6 +38,7 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
         }
         setFocusedIndex(nextIndex)
     }
+
     return (
         <form className='flex flex-col' onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
             <label>Add A Member</label>

@@ -6,13 +6,22 @@ import SearchUsers from '../../components/users/SearchUsers'
 const HomeDetails = () => {
     const router = useRouter()
     const inputRef = useRef<HTMLInputElement>(null)
+    const selectRef = useRef<HTMLSelectElement>(null)
+    const dateRef = useRef<HTMLInputElement>(null)
+    const { mutate } = api.home.addChore.useMutation()
     const { data: home } = api.home.getHomeDetails.useQuery({ id: router.query.id as string })
+    if (!home) return null
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const chore = inputRef?.current?.value
-        console.log(chore)
+        const user = selectRef?.current?.value
+        const date = dateRef?.current?.valueAsDate
+
+        if (chore && user && date) {
+            mutate({ houseId: home?.id, title: chore, userId: user, dueDate: date })
+        }
     }
-    if (!home) return null
 
     return (
         <div className='text-emerald-500'>
@@ -24,7 +33,7 @@ const HomeDetails = () => {
                 <label>Add Chore</label>
                 <input ref={inputRef} type='text' />
                 <label>Assign Member</label>
-                <select>
+                <select ref={selectRef}>
                     <option value=''> Select Member </option>
                     {
                         home?.members.map(member => (
@@ -32,8 +41,21 @@ const HomeDetails = () => {
                         ))
                     }
                 </select>
+                <label>Due Date</label>
+                <input ref={dateRef} type='date' />
                 <button type='submit'>Create Chore</button>
             </form>
+            <div>
+                <h2>Chores</h2>
+                {
+                    home?.chores.map(chore => (
+                        <div key={chore.id}>
+                            <h3>{chore.title}</h3>
+                            <h3>{chore.userId}</h3>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     )
 }
