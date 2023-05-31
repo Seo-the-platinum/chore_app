@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { useRouter } from 'next/router'
 import { api } from '~/utils/api'
 import SearchUsers from '../../components/users/SearchUsers'
+import Chore from '../../components/chore/Chore'
 
 const HomeDetails = () => {
     const router = useRouter()
@@ -9,8 +10,8 @@ const HomeDetails = () => {
     const selectRef = useRef<HTMLSelectElement>(null)
     const dateRef = useRef<HTMLInputElement>(null)
     const { mutate } = api.home.addChore.useMutation()
-    const { data: home } = api.home.getHomeDetails.useQuery({ id: router.query.id as string })
-    if (!home) return null
+    const { data: home, isLoading } = api.home.getHomeDetails.useQuery({ id: router.query.id as string })
+    if (!home || isLoading) return null
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -26,8 +27,8 @@ const HomeDetails = () => {
     return (
         <div className='text-emerald-500'>
             <h1>Home Details</h1>
-            <h3>{home?.name.toLocaleUpperCase()}</h3>
-            <h3>{home?.admin.username}</h3>
+            <h3>{home.name.toLocaleUpperCase()}</h3>
+            <h3>{home.admin.username}</h3>
             <SearchUsers houseId={home.id} />
             <form className='flex flex-col' onSubmit={handleSubmit}>
                 <label>Add Chore</label>
@@ -36,7 +37,7 @@ const HomeDetails = () => {
                 <select ref={selectRef}>
                     <option value=''> Select Member </option>
                     {
-                        home?.members.map(member => (
+                        home.members.map(member => (
                             <option key={member.id} value={member.id}>{member.username}</option>
                         ))
                     }
@@ -48,11 +49,8 @@ const HomeDetails = () => {
             <div>
                 <h2>Chores</h2>
                 {
-                    home?.chores.map(chore => (
-                        <div key={chore.id}>
-                            <h3>{chore.title}</h3>
-                            <h3>{chore.userId}</h3>
-                        </div>
+                    home.chores.map(chore => (
+                        <Chore key={chore.id} {...chore} />
                     ))
                 }
             </div>

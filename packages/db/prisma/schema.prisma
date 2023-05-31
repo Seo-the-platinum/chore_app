@@ -81,6 +81,7 @@ model Chore {
     houseId String
     title String
     due DateTime
+    completed Boolean @default(false)
 }
 
 model Invite {

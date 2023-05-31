@@ -48,7 +48,11 @@ export const homeRouter = createTRPCRouter({
         },
         include: {
           admin: true,
-          chores: true,
+          chores: {
+            include: {
+              user: true,
+            },
+          },
           members: true,
         },
       });
