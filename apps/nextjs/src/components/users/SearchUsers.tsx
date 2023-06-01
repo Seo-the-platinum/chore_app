@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { api } from '~/utils/api'
+import type { SearchUsersProps } from '~/types/components/searchUsers'
 
 const SearchUsers = ({ houseId }: SearchUsersProps) => {
     const [userQuery, setUserQuery] = useState('')

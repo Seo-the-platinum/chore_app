@@ -1,3 +1,3 @@
-type SearchUsersProps = {
+export type SearchUsersProps = {
   houseId: string;
 };
