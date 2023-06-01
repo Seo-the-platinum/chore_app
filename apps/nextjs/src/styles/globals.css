@@ -4,10 +4,14 @@
 
 #__next {
   min-width: 100%;
-  background-image: linear-gradient(to bottom, #2e026d, #15162c);
+  /* background-image: linear-gradient(to bottom, #2e026d, #15162c); */
   height: 100vh;
   overflow-y: scroll;
   padding: 0.5em;
+}
+
+#__next {
+  @apply bg-slate-800;
 }
 
 @media screen and (min-width: 640px) {

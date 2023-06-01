@@ -17,7 +17,8 @@ const Footer = () => {
             {
                 session &&
                 <>
-                    <Link href={`/homes`}> My Homes </Link> <Link href={`/chores/${session.user.id}`}>My Chores</Link>
+                    <Link href={`/homes`}> My Homes </Link>
+                    <Link href={`/chores/mychores/${session.user.id}`}>My Chores</Link>
                 </>
             }
         </nav>

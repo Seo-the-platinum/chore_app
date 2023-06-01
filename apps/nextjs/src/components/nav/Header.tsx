@@ -14,7 +14,10 @@ const Header = () => {
         >
             <Link href='/'>Chore App</Link>
             {
-                session && <Link href={`/homes`}>My Homes</Link>
+                session &&
+                <>
+                    <Link href={`/homes`}> My Homes </Link> <Link href={`/chores/mychores/${session.user.id}`}>My Chores</Link>
+                </>
 
             }
         </nav>
