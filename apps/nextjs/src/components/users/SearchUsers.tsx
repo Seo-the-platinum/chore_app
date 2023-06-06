@@ -44,7 +44,7 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
         <form className='flex flex-col' onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
             <label>Add A Member</label>
             <div>
-                <input onChange={handleChange} type='text' value={userQuery} />
+                <input className='rounded-lg text-black focus:outline-none focus:border-blue-600 focus:border-2' onChange={handleChange} type='text' value={userQuery} />
                 <div className='bg-slate-50'>
                     {users && users.map((user, index) => (
                         <div
@@ -55,7 +55,7 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
                         </div>
                     ))}
                 </div>
-                <button type='submit'>Add</button>
+                <button className='rounded-lg focus:outline-none focus:border-blue-600 focus:border-2' type='submit'>Add</button>
             </div>
         </form>
     )

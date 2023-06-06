@@ -25,16 +25,15 @@ const HomeDetails = () => {
     }
 
     return (
-        <div className='text-emerald-500'>
-            <h1>Home Details</h1>
-            <h3>{home.name.toLocaleUpperCase()}</h3>
+        <div className='text-emerald-500 flex flex-col items-center'>
+            <h3 className='text-3xl'>{home.name.toLocaleUpperCase()}</h3>
             <h3>{home.admin.username}</h3>
             <SearchUsers houseId={home.id} />
-            <form className='flex flex-col' onSubmit={handleSubmit}>
+            <form className='flex flex-col focus:outline-none focus:border-blue-600 focus:border-2' onSubmit={handleSubmit}>
                 <label>Add Chore</label>
-                <input ref={inputRef} type='text' />
+                <input className='rounded-lg text-black focus:outline-none focus:border-blue-600 focus:border-2' ref={inputRef} type='text' />
                 <label>Assign Member</label>
-                <select ref={selectRef}>
+                <select className='rounded-lg text-black focus:outline-none focus:border-blue-600 focus:border-2' ref={selectRef}>
                     <option value=''> Select Member </option>
                     {
                         home.members.map(member => (
@@ -43,8 +42,8 @@ const HomeDetails = () => {
                     }
                 </select>
                 <label>Due Date</label>
-                <input ref={dateRef} type='date' />
-                <button type='submit'>Create Chore</button>
+                <input className='rounded-lg text-black focus:outline-none focus:border-blue-600 focus:border-2' ref={dateRef} type='date' />
+                <button className='rounded-lg focus:outline-none focus:border-blue-600 focus:border-2' type='submit'>Create Chore</button>
             </form>
             <div>
                 <h2>Chores</h2>

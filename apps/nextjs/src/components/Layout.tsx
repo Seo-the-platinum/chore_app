@@ -6,7 +6,7 @@ const Layout = ({ children }: PropsWithChildren) => {
     return (
         <div className='max-w-7xl min-full flex-grow'>
             <Nav />
-            <main>{children}</main>
+            <main className='mt-4'>{children}</main>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from 'next/image'
+import Upcoming from '../components/chore/Upcoming'
 
 const Home: NextPage = () => {
 
@@ -13,10 +14,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col items-center text-white">
-        <div className="container mt-12 flex flex-col items-center justify-center gap-4 px-4 py-8">
+        <div className="container flex flex-col items-center justify-center gap-4 px-4">
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
             Chore <span className='text-emerald-500'>App</span>
           </h1>
+          <Upcoming />
         </div>
         <div className='flex flex-col'>
           <Image className='' src='/images/tifa_cosplay.jpeg' width={200} height={200} alt='tifa cosplayer' />
