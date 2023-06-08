@@ -41,10 +41,15 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
     }
 
     return (
-        <form className='flex flex-col' onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
-            <label>Add A Member</label>
-            <div>
-                <input className='rounded-lg text-black focus:outline-none focus:border-blue-600 focus:border-2' onChange={handleChange} type='text' value={userQuery} />
+        <form className='flex flex-col gap-2 text-center pb-4' onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
+            <label className='text-2xl'>Add Member</label>
+            <div className='flex flex-col text-center gap-2'>
+                <input
+                    className='
+                        rounded-lg text-black 
+                        focus:outline-none focus:border-blue-600 
+                        focus:border-2'
+                    onChange={handleChange} type='text' value={userQuery} />
                 <div className='bg-slate-50'>
                     {users && users.map((user, index) => (
                         <div
@@ -55,7 +60,15 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
                         </div>
                     ))}
                 </div>
-                <button className='rounded-lg focus:outline-none focus:border-blue-600 focus:border-2' type='submit'>Add</button>
+                <button
+                    className='
+                        rounded-lg bg-indigo-900 w-28 h-8 
+                        self-center text-slate-50
+                        focus:outline-none focus:border-blue-600 
+                        focus:border-2'
+                    type='submit'>
+                    Add
+                </button>
             </div>
         </form>
     )

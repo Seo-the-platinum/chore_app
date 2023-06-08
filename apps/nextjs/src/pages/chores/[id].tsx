@@ -5,12 +5,10 @@ import { generateSSGHelper } from '~/utils/helpers/ssgHelper';
 
 const Chores: NextPage<{ id: string }> = ({ id }) => {
     const { data: chore } = api.chore.getChoreDetails.useQuery({ choreId: id })
-
     if (!chore) return null
-
     return (
-        <div>
-            <h1>Chore Details</h1>
+        <div className='flex flex-col text-slate-50 items-center'>
+            <h1 className='text-xl'>Chore Details</h1>
             <h2>{chore.title}</h2>
             <h2>{chore.user.username}</h2>
         </div>

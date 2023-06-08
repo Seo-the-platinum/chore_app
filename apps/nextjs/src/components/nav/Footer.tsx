@@ -5,12 +5,13 @@ import { api } from '~/utils/api'
 const Footer = () => {
     const { data: session } = api.auth.getSession.useQuery()
     return (
-        <nav className='
-            absolute bottom-0 left-0 
-            bg-gradient-to-t from-slate-900 to-slate-800
-            flex justify-around min-w-full
-            text-emerald-500 py-4
-            sm:text-4xl sm:justify-end sm:gap-10
+        <nav
+            className='
+                absolute bottom-0 left-0 h-14
+                bg-gradient-to-t from-slate-900 to-slate-800
+                flex justify-around min-w-full
+                text-emerald-500 py-4
+                sm:text-4xl sm:justify-end sm:gap-10
             '
         >
             <Link href='/'> Home </Link>
