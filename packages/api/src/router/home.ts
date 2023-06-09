@@ -64,11 +64,13 @@ export const homeRouter = createTRPCRouter({
         title: z.string(),
         dueDate: z.date(),
         userId: z.string(),
+        description: z.string(),
       }),
     )
     .mutation(({ ctx, input }) => {
       return ctx.prisma.chore.create({
         data: {
+          description: input.description,
           due: input.dueDate,
           title: input.title,
           house: {

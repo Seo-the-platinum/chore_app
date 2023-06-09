@@ -80,6 +80,7 @@ model Chore {
     house House @relation(fields: [houseId], references: [id], onDelete: Cascade)
     houseId String
     title String
+    description String @default("")
     due DateTime
     completed Boolean @default(false)
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { api } from '~/utils/api'
 import type { SearchUsersProps } from '~/types/components/searchUsers'
+import Button from '../buttons/Button'
 
 const SearchUsers = ({ houseId }: SearchUsersProps) => {
     const [userQuery, setUserQuery] = useState('')
@@ -41,9 +42,9 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
     }
 
     return (
-        <form className='flex flex-col gap-2 text-center pb-4' onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
+        <form className='flex flex-col gap-2 pb-4 text-center' onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
             <label className='text-2xl'>Add Member</label>
-            <div className='flex flex-col text-center gap-2'>
+            <div className='flex flex-col items-center gap-2'>
                 <input
                     className='
                         rounded-lg text-black 
@@ -60,15 +61,7 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
                         </div>
                     ))}
                 </div>
-                <button
-                    className='
-                        rounded-lg bg-indigo-900 w-28 h-8 
-                        self-center text-slate-50
-                        focus:outline-none focus:border-blue-600 
-                        focus:border-2'
-                    type='submit'>
-                    Add
-                </button>
+                <Button label='Add' type='submit' />
             </div>
         </form>
     )

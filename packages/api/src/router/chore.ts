@@ -12,6 +12,7 @@ export const choreRouter = createTRPCRouter({
         },
         include: {
           user: true,
+          house: true,
         },
       });
     }),
