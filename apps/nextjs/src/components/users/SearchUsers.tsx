@@ -42,24 +42,26 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
     }
 
     return (
-        <form className='flex flex-col gap-2 pb-4 text-center' onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
-            <label className='text-2xl'>Add Member</label>
+        <form className='flex flex-col gap-2 pb-4' onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
+            <label className='text-2xl text-center'>Add Member</label>
             <div className='flex flex-col items-center gap-2'>
-                <input
-                    className='
-                        rounded-lg text-black 
-                        focus:outline-none focus:border-blue-600 
-                        focus:border-2'
-                    onChange={handleChange} type='text' value={userQuery} />
-                <div className='bg-slate-50'>
-                    {users && users.map((user, index) => (
-                        <div
-                            className={`${index === focusedIndex && 'border-white border-2 rounded-lg bg-slate-300'}`}
-                            key={user.id}
-                            ref={index === focusedIndex ? resultContainer : null}>
-                            {user.username}
-                        </div>
-                    ))}
+                <div>
+                    <input
+                        className={` ${userQuery.length && users?.length && 'rounded-b-none'}
+                            rounded-lg text-black w-full
+                            focus:outline-none focus:border-blue-600 
+                            focus:border-2`}
+                        onChange={handleChange} type='text' value={userQuery} />
+                    <div className='bg-slate-300 w-full rounded-b-lg border-none'>
+                        {users && users.map((user, index) => (
+                            <div
+                                className={`${index === focusedIndex && 'border-b-2 rounded-lg bg-slate-300'}`}
+                                key={user.id}
+                                ref={index === focusedIndex ? resultContainer : null}>
+                                {user.username}
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <Button label='Add' type='submit' />
             </div>

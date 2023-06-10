@@ -10,7 +10,7 @@ import { BsFillEnvelopeFill } from "react-icons/bs";
 const Nav = () => {
     const width = ResizeHook()
     const { data: session } = api.auth.getSession.useQuery()
-    const { data: invites } = api.user.getUserInvites.useQuery()
+    const { data: invites } = api.user.getUserInvites.useQuery(undefined, { enabled: !!session })
 
     const handleSignIn = async () => {
         await signIn(undefined, { callbackUrl: "/onboarding" })

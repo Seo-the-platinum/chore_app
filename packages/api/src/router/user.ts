@@ -24,6 +24,11 @@ export const userRouter = createTRPCRouter({
               id: input.houseId,
             },
           },
+          invites: {
+            none: {
+              houseId: input.houseId,
+            },
+          },
           NOT: {
             id: ctx.session.user.id,
           },

@@ -65,12 +65,13 @@ model VerificationToken {
 
 model House {
     id String @id @default(cuid())
-    name String
+    name String 
     admin User @relation("Admin", fields:[adminId], references: [id])
     adminId String
     members User[] @relation("members")
     chores Chore[]
     invites Invite[]
+    @@unique([name, adminId])
 }
 
 model Chore {

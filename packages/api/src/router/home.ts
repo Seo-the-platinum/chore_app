@@ -5,18 +5,30 @@ import { createTRPCRouter, protectedProcedure } from "../trpc";
 export const homeRouter = createTRPCRouter({
   addHome: protectedProcedure
     .input(z.object({ name: z.string() }))
-    .mutation(({ ctx, input }) => {
-      return ctx.prisma.house.create({
-        data: {
-          name: input.name,
-          adminId: ctx.session.user.id,
-          members: {
-            connect: {
-              id: ctx.session.user.id,
-            },
+    .mutation(async ({ ctx, input }) => {
+      const existingHouse = await ctx.prisma.house.findFirst({
+        where: {
+          name: {
+            equals: input.name,
+            mode: "insensitive",
           },
         },
       });
+      if (!existingHouse) {
+        return ctx.prisma.house.create({
+          data: {
+            name: input.name,
+            adminId: ctx.session.user.id,
+            members: {
+              connect: {
+                id: ctx.session.user.id,
+              },
+            },
+          },
+        });
+      } else {
+        throw new Error("House already exists");
+      }
     }),
   getHomes: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.house.findMany({

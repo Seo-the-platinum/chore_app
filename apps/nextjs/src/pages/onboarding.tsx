@@ -3,6 +3,7 @@ import type { GetServerSideProps } from 'next'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from '../../../../packages/auth/src/auth-options'
 import { api } from '~/utils/api'
+import Button from '~/components/buttons/Button'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getServerSession(context.req, context.res, authOptions)
@@ -32,10 +33,18 @@ const Onboarding = () => {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label>Username</label>
-                <input ref={inputRef} type='text' />
-                <button type='submit'>Submit</button>
+            <form className='flex flex-col items-center gap-4 text-slate-50' onSubmit={handleSubmit}>
+                <div className='flex flex-col'>
+                    <label>Create Username</label>
+                    <input
+                        className='
+                            rounded-lg text-black 
+                            focus:outline-none focus:border-blue-600 
+                            focus:border-2'
+                        ref={inputRef}
+                        type='text' />
+                </div>
+                <Button type='submit' label='Submit' />
             </form>
         </div>
     )
