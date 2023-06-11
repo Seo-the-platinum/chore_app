@@ -72,7 +72,7 @@ const HomeDetails = () => {
                     <input className='rounded-lg text-black focus:outline-none focus:border-blue-600 focus:border-2' ref={dateRef} type='date' />
                     <Button label='Add Chore' type='submit' />
                 </form>
-                <div className='pt-2 flex flex-col gap-4'>
+                <div className='pt-2 flex flex-col gap-4 text-center'>
                     <label className='text-3xl'>Chores</label>
                     {
                         home.chores.map(chore => (

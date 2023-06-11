@@ -16,4 +16,16 @@ export const choreRouter = createTRPCRouter({
         },
       });
     }),
+  completeChore: protectedProcedure
+    .input(z.object({ choreId: z.string() }))
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.chore.update({
+        where: {
+          id: input.choreId,
+        },
+        data: {
+          completed: true,
+        },
+      });
+    }),
 });
