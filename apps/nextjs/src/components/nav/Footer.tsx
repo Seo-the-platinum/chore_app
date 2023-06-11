@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <nav
             className='
-                absolute bottom-0 left-0 h-14
+                fixed bottom-0 left-0 h-14
                 bg-gradient-to-t from-slate-900 to-slate-800
                 flex justify-around min-w-full
                 text-emerald-500 py-4
