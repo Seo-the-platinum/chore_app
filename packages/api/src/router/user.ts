@@ -7,6 +7,10 @@ export const userRouter = createTRPCRouter({
     return ctx.prisma.chore.findMany({
       where: {
         userId: ctx.session.user.id,
+        completed: false,
+      },
+      include: {
+        house: true,
       },
     });
   }),
