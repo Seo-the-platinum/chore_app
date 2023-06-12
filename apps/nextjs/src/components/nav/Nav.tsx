@@ -35,13 +35,13 @@ const Nav = () => {
                         }
 
                         <button
-                            className='rounded p-1 text-slate-100 bg-emerald-500'
+                            className='rounded p-1 text-slate-100 bg-emerald-500 w-20'
                             onClick={() => void handleSignOut()}>Sign Out
                         </button>
                     </div>
                     :
                     <button
-                        className='rounded p-1 text-slate-100 bg-emerald-500'
+                        className='rounded p-1 text-slate-100 bg-emerald-500 w-20'
                         onClick={() => void handleSignIn()}>Sign In
                     </button>
             }

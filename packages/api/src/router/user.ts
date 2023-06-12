@@ -12,6 +12,11 @@ export const userRouter = createTRPCRouter({
       include: {
         house: true,
       },
+      orderBy: {
+        house: {
+          name: "asc",
+        },
+      },
     });
   }),
   getFilteredUsers: protectedProcedure

@@ -8,6 +8,7 @@ import Link from 'next/link'
 type choreWithUser = RouterOutputs['user']['getUsersChores'][number] & { user: User }
 
 const Chore = ({ ...chore }: choreWithUser) => {
+    if (!chore) return null
     return (
         <Link
             className='
