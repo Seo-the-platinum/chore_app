@@ -27,3 +27,13 @@ type ReplyObject = {
   inviteId: string;
   accepted: boolean;
 };
+
+export type Chore = {
+  id: string;
+  title: string;
+  description: string;
+  houseId: string;
+  userId: string;
+  completed: boolean;
+  due: Date;
+};

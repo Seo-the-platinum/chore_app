@@ -4,9 +4,9 @@ import type { PropsWithChildren } from 'react'
 
 const Layout = ({ children }: PropsWithChildren) => {
     return (
-        <div className='max-w-7xl min-h-full flex flex-col gap-1'>
+        <div className='max-w-7xl flex flex-col gap-2'>
             <Nav />
-            <main className='min-h-full mb-14 overflow-y-auto'>{children}</main>
+            <main className='mb-14 min-full'>{children}</main>
         </div>
     )
 }

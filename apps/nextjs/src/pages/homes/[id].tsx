@@ -1,12 +1,34 @@
 import React, { useRef } from 'react'
-import { useRouter } from 'next/router'
 import { api } from '~/utils/api'
 import SearchUsers from '../../components/users/SearchUsers'
 import Chore from '../../components/chore/Chore'
 import Button from '~/components/buttons/Button'
+import { generateSSGHelper } from '~/utils/helpers/ssgHelper'
 
-const HomeDetails = () => {
-    const router = useRouter()
+//Types
+import type { GetStaticProps } from 'next'
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+    const ssg = generateSSGHelper()
+    const id = ctx.params?.id as string
+    await ssg.home.getHomeDetails.prefetch({ id: id })
+    return {
+        props: {
+            trpcState: ssg.dehydrate(),
+            id,
+        },
+    }
+}
+
+export const getStaticPaths = () => {
+    return { paths: [], fallback: "blocking" };
+};
+
+type HomeDetailsProps = {
+    id: string
+}
+
+const HomeDetails = ({ id }: HomeDetailsProps) => {
     const inputRef = useRef<HTMLInputElement>(null)
     const selectRef = useRef<HTMLSelectElement>(null)
     const dateRef = useRef<HTMLInputElement>(null)
@@ -17,7 +39,7 @@ const HomeDetails = () => {
             await utility.home.getHomeDetails.invalidate()
         },
     })
-    const { data: home, isLoading } = api.home.getHomeDetails.useQuery({ id: router.query.id as string })
+    const { data: home, isLoading } = api.home.getHomeDetails.useQuery({ id: id })
     if (!home || isLoading) return null
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -55,7 +77,7 @@ const HomeDetails = () => {
                     onSubmit={handleSubmit}>
                     <label className='text-2xl'>Create Chore</label>
                     <label>Chore Title</label>
-                    <input className='rounded-lg text-black focus:outline-none focus:border-blue-600 focus:border-2' ref={inputRef} type='text' />
+                    <input className='rounded-lg text-black focus:outline-none focus:border-blue-600 focus:border-2' ref={inputRef} type='text' maxLength={20} />
                     <label>Chore Description</label>
                     <textarea className='rounded-lg text-black focus:outline-none focus:border-blue-600 focus:border-2 h-32 text-start' ref={descriptionRef} maxLength={250}>
                     </textarea>

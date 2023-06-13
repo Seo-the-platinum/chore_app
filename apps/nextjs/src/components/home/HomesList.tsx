@@ -7,12 +7,14 @@ const HomesList = ({ homes }: HomesProps) => {
         <ul className='flex flex-col mt-4 gap-6'>
             {homes.map(home => (
                 <Link
-                    className='bg-slate-800 rounded-3xl'
+                    className='
+                        bg-gradient-to-br from-black from-50% 
+                        via-indigo-900 to-black to-51%
+                        rounded-3xl'
                     key={home.id}
                     href={`homes/${home.id}`}>
                     <li
                         className='
-                            bg-indigo-900
                             flex flex-col gap-4 p-5 rounded-3xl 
                             items-center text-emerald-500'
                     >

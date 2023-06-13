@@ -22,14 +22,14 @@ const Chores: NextPage<{ id: string }> = ({ id }) => {
     return (
         <div className='flex flex-col text-slate-50 items-center text-xl'>
             <h2 className='text-3xl text-emerald-500'>{chore.title}</h2>
-            <div className="flex flex-col divide-y-2 divide-indigo-800 items-center mt-4 w-[224px]">
+            <div className="flex flex-col divide-y-2 divide-indigo-800 items-center mt-8 gap-4 w-[224px]">
                 <div className='flex flex-col gap-2 pb-4'>
                     <label className='text-emerald-500'>Asssigned</label>
                     <h2>{chore.user.username}</h2>
                 </div>
                 <div className="flex flex-col text-center py-4">
                     <label className='text-emerald-500'>Description</label>
-                    <p>{chore.description}</p>
+                    <p className='text-base text-start'>{chore.description}</p>
                 </div>
                 <div className="flex flex-col gap-4 pt-4 items-center w-[224px]">
                     <label className='text-emerald-500'>Due Date</label>

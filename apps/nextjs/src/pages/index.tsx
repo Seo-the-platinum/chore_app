@@ -1,8 +1,6 @@
 import React from 'react'
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from 'next/image'
-import Upcoming from '../components/chore/Upcoming'
 
 const Home: NextPage = () => {
 
@@ -15,15 +13,9 @@ const Home: NextPage = () => {
       </Head>
       <main className="flex flex-col items-center text-white">
         <div className="container flex flex-col items-center justify-center gap-4 px-4">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-[5rem]">
             Chore <span className='text-emerald-500'>App</span>
           </h1>
-          <Upcoming />
-        </div>
-        <div className='flex flex-col'>
-          <Image className='' src='/images/tifa_cosplay.jpeg' width={200} height={200} alt='tifa cosplayer' />
-          <Image className='' src='/images/aerith_cosplay.webp' width={200} height={200} alt='aerith cosplayer' />
-          <Image className='' src='/images/lulu_cosplay.jpeg' width={200} height={200} alt='lulu cosplayer' />
         </div>
       </main>
     </>

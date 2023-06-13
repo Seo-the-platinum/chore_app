@@ -1,11 +1,11 @@
 import React from 'react'
 
 //Types
-import type { RouterOutputs } from '~/utils/api'
+import { Chore } from '../../types/global';
 import type { User } from '../../types/global'
 import Link from 'next/link'
 
-type choreWithUser = RouterOutputs['user']['getUsersChores'][number] & { user: User }
+type choreWithUser = Chore & { user: User }
 
 const Chore = ({ ...chore }: choreWithUser) => {
     if (!chore) return null
@@ -13,7 +13,7 @@ const Chore = ({ ...chore }: choreWithUser) => {
         <Link
             className='
                 flex flex-col text-slate-50
-                rounded-lg bg-indigo-900
+                rounded-lg bg-gradient-to-br from-black from-50%  via-indigo-900 to-black to-51%
                 text-center w-56 h-24 justify-evenly'
             href={`/chores/${chore.id}`}>
             <h3>{chore.title.toUpperCase()}</h3>
