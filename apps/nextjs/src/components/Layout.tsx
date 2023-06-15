@@ -1,5 +1,7 @@
 import React from 'react'
 import Nav from './nav/Nav'
+
+//types
 import type { PropsWithChildren } from 'react'
 
 const Layout = ({ children }: PropsWithChildren) => {

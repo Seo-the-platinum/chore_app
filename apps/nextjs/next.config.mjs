@@ -6,6 +6,9 @@
 
 /** @type {import("next").NextConfig} */
 const config = {
+  images: {
+    domains: ["lh3.googleusercontent.com"],
+  },
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: ["@acme/api", "@acme/auth", "@acme/db"],
   /** We already do linting and typechecking as separate tasks in CI */

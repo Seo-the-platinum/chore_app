@@ -52,10 +52,10 @@ const SearchUsers = ({ houseId }: SearchUsersProps) => {
                             focus:outline-none focus:border-blue-600 
                             focus:border-2`}
                         onChange={handleChange} type='text' value={userQuery} />
-                    <div className='bg-slate-300 w-full rounded-b-lg border-none'>
+                    <div className='bg-slate-50 w-full rounded-b-lg border-none'>
                         {users && users.map((user, index) => (
                             <div
-                                className={`${index === focusedIndex && 'border-b-2 rounded-lg bg-slate-300'}`}
+                                className={`${index === focusedIndex && 'border-2 bg-slate-300 border-sky-500'}`}
                                 key={user.id}
                                 ref={index === focusedIndex ? resultContainer : null}>
                                 {user.username}

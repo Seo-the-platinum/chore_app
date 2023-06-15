@@ -45,6 +45,25 @@ export const userRouter = createTRPCRouter({
         take: 5,
       });
     }),
+  getUserProfile: protectedProcedure.query(({ ctx }) => {
+    return ctx.prisma.user.findUnique({
+      where: {
+        id: ctx.session.user.id,
+      },
+      include: {
+        homes: {
+          include: {
+            chores: {
+              where: {
+                userId: ctx.session.user.id,
+                completed: false,
+              },
+            },
+          },
+        },
+      },
+    });
+  }),
   addUsername: protectedProcedure
     .input(z.string())
     .mutation(({ ctx, input }) => {
