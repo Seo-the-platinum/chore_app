@@ -12,7 +12,7 @@ const Profile = ({ user }: ProfileProps) => {
                 <h2 className='text-2xl'>{user.username}</h2>
             </div>
             <div className='pt-4 text-center flex-col flex gap-2'>
-                <h2 className='text-2xl'>Due</h2>
+                <h2 className='text-3xl'>Homes</h2>
                 <div className='flex flex-col gap-8'>
                     {
                         user.homes && user.homes.map((home) => {

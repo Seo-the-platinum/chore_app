@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Link from 'next/link'
 //Types
 import type { HomeWithProps } from '../../types/components/HomeWith'
 
@@ -11,7 +11,13 @@ const HomeWithChores = ({ home }: HomeWithProps) => {
             <ul className='text-start p-2'>
                 {
                     home.chores && home.chores.map((chore) => {
-                        return <li key={chore.id}>{chore.title}</li>
+                        return (
+                            <li key={chore.id}>
+                                <Link className=' rounded-sm bg-gradient-to-tr from-purple-800 to-indigo-800 p-1' href={`/chores/${chore.id}`}>
+                                    {chore.title}
+                                </Link>
+                            </li>
+                        )
                     })
                 }
             </ul>
