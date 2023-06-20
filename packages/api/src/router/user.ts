@@ -67,12 +67,13 @@ export const userRouter = createTRPCRouter({
   addUsername: protectedProcedure
     .input(z.string())
     .mutation(({ ctx, input }) => {
+      const username = input.charAt(0).toUpperCase() + input.slice(1);
       return ctx.prisma.user.update({
         where: {
           id: ctx.session.user.id,
         },
         data: {
-          username: input,
+          username: username,
         },
       });
     }),
