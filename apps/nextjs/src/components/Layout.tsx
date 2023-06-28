@@ -6,7 +6,7 @@ import type { PropsWithChildren } from 'react'
 
 const Layout = ({ children }: PropsWithChildren) => {
     return (
-        <div className='max-w-7xl flex flex-col gap-2'>
+        <div className='max-w-7xl flex flex-col gap-6'>
             <Nav />
             <main className='mb-14 min-full'>{children}</main>
         </div>

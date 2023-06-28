@@ -12,11 +12,11 @@ const Header = () => {
             sm:text-4xl sm:justify-end sm:gap-10
         '
         >
-            <Link href='/'>Chore App</Link>
             {
                 session &&
                 <>
-                    <Link href={`/homes`}> My Homes </Link> <Link href={`/chores/mychores/${session.user.id}`}>My Chores</Link>
+                    <Link href={`/homes`}> Homes </Link>
+                    <Link href={`/chores/mychores/${session.user.id}`}>Chores</Link>
                 </>
 
             }

@@ -19,7 +19,10 @@ const Nav = () => {
         await signOut({ callbackUrl: '/' })
     }
     return (
-        <div className='flex justify-end gap-10'>
+        <div className='flex justify-between gap-10 z-10'>
+            <Link className="pl-4 text-slate-50 text-4xl font-extrabold tracking-tight self-start" href='/'>
+                Chore <span className='text-emerald-500'>App</span>
+            </Link>
             {
                 width < 640 ? <Footer /> :
                     <Header />
@@ -35,13 +38,13 @@ const Nav = () => {
                         }
 
                         <button
-                            className='rounded p-1 text-slate-100 bg-emerald-500 w-20'
+                            className='rounded p-1 text-slate-100 bg-emerald-500 w-20 h-10'
                             onClick={() => void handleSignOut()}>Sign Out
                         </button>
                     </div>
                     :
                     <button
-                        className='rounded p-1 text-slate-100 bg-emerald-500 w-20'
+                        className='rounded p-1 text-slate-100 bg-emerald-500 w-20 h-10'
                         onClick={() => void handleSignIn()}>Sign In
                     </button>
             }

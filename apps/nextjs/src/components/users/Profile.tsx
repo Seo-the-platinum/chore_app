@@ -8,10 +8,11 @@ const Profile = ({ user }: ProfileProps) => {
     return (
         <div className='flex flex-col px-2 items-center'>
             <div className='
-                flex flex-col gap-4 pb-4 w-3/4
-                after:bg-gradient-to-br after:from-emerald-500 
-                after:to-indigo-900 after:h-1 after:rounded-lg 
-                after:brightness-150'>
+                flex flex-col gap-4 pb-4 w-full
+                after:bg-gradient-to-br after:from-green-500
+                after:to-blue-800 after:h-1 after:rounded-lg
+                after:brightness-125'
+            >
                 <div className="flex items-end justify-evenly">
                     <Image alt='Users Profile Image' className='rounded-full' src={`${user.image ? user.image : '/images/temp.png'}`} width={84} height={84} />
                     <h2 className='text-2xl'>{user.username}</h2>

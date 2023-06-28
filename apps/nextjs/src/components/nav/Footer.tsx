@@ -7,19 +7,18 @@ const Footer = () => {
     return (
         <nav
             className='
-                fixed bottom-0 left-0 h-14
+                fixed bottom-0 left-0 h-14 text-xl font-bold
                 bg-gradient-to-t from-slate-900 to-slate-800
                 flex justify-around min-w-full
-                text-emerald-500 py-4
+                text-emerald-400 py-4
                 sm:text-4xl sm:justify-end sm:gap-10
             '
         >
-            <Link href='/'> Home </Link>
             {
                 session &&
                 <>
-                    <Link href={`/homes`}> My Homes </Link>
-                    <Link href={`/chores/mychores/${session.user.id}`}>My Chores</Link>
+                    <Link href={`/homes`}> Homes </Link>
+                    <Link href={`/chores/mychores/${session.user.id}`}> Chores</Link>
                 </>
             }
         </nav>

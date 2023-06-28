@@ -21,9 +21,9 @@ const Home: NextPage = () => {
       </Head>
       <main className="flex flex-col items-center text-white">
         <div className="container flex flex-col justify-center gap-4">
-          <h1 className="pl-4 text-4xl font-extrabold tracking-tight sm:text-[5rem]">
+          {/* <h1 className="pl-4 text-4xl font-extrabold tracking-tight sm:text-[5rem]">
             Chore <span className='text-emerald-500'>App</span>
-          </h1>
+          </h1> */}
           {user && <Profile user={user} />}
         </div>
       </main>
