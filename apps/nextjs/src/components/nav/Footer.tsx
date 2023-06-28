@@ -8,7 +8,7 @@ const Footer = () => {
         <nav
             className='
                 fixed bottom-0 left-0 h-14 text-xl font-bold
-                bg-gradient-to-t from-slate-900 to-slate-800
+                bg-slate-900 border-t-2 border-indigo-900
                 flex justify-around min-w-full
                 text-emerald-400 py-4
                 sm:text-4xl sm:justify-end sm:gap-10
